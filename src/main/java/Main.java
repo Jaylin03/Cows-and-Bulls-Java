@@ -36,10 +36,19 @@ public class Main {
     return compNumber;
   }
 
+  public static int bullCount(int bull) {
+    return bull += 1;
+  }
+
+  public static int cowCount(int cow) {
+    return cow += 1;
+  }
   
   public static void main(String[] args) {
 
     System.out.println(newNumber());
+    System.out.println(bullCount(5));
+    System.out.println(cowCount(3));
 
     
   }
