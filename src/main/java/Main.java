@@ -43,12 +43,17 @@ public class Main {
   public static int cowCount(int cow) {
     return cow += 1;
   }
+
+  public static int guessCount(int guess) {
+    return guess += 1;
+  }
   
   public static void main(String[] args) {
 
     System.out.println(newNumber());
     System.out.println(bullCount(5));
     System.out.println(cowCount(3));
+    System.out.println(guessCount(7));
 
     
   }
