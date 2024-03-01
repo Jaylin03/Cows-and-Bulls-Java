@@ -36,25 +36,37 @@ public class Main {
     return compNumber;
   }
 
-  public static int bullCount(int bull) {
-    return bull += 1;
-  }
-
-  public static int cowCount(int cow) {
-    return cow += 1;
-  }
-
   public static int guessCount(int guess) {
     return guess += 1;
+  }
+
+
+  public static int[] cowBullSearch(String userNumber, String compNumber, int[] cowBullCount) {
+    // Specifiy the indecies of the cow and bull variables
+    int cow = cowBullCount[0];
+    int bull = cowBullCount[1];
+    
+    // Search for cows and bulls by iterating through the userNumber and compNumber
+    for (int i = 0; i < compNumber.length(); i++) {
+      // If the 2 digits are at the same index --> cow
+      if (userNumber[i] == compNumber[i]) {
+        cow += 1;
+      }
+      // If a digit from the userNumber is in the compNumber but not at the same index --> bull
+      else if (compNumber.contains(userNumber[i])) {
+        bull += 1;
+      }
+
+    // Return the number of cows and bulls from this search
+    return cowBullCount;
+        
+}
+    }
   }
   
   public static void main(String[] args) {
 
-    System.out.println(newNumber());
-    System.out.println(bullCount(5));
-    System.out.println(cowCount(3));
-    System.out.println(guessCount(7));
-
+    
     
   }
 }
