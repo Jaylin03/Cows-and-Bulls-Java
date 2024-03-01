@@ -41,7 +41,8 @@ public class Main {
   }
 
 
-  public static int[] cowBullSearch(String userNumber, String compNumber, int[] cowBullCount) { 
+  public static int[] cowBullSearch(String userNumber, String compNumber) { 
+    int[] cowBullCount = {0, 0};
     // Search for cows and bulls by iterating through the userNumber and compNumber
     for (int i = 0; i < compNumber.length(); i++) {
       
@@ -59,9 +60,7 @@ public class Main {
 }
   
   public static void main(String[] args) {
-    int[] cowBullCount = new int[2];
-    int cow = cowBullCount[0];
-    int bull = cowBullCount[1];
+
     int guess = 0;
     String compNumber = String.valueOf(newNumber());
     
@@ -71,9 +70,11 @@ public class Main {
 
     while (userNumber != compNumber) {
       guess += 1;
-      cowBullCount = cowBullSearch(userNumber, compNumber, cowBullCount);
-      System.out.println("cowBull =" + cowBullCount);
+      int [] cowBullCount = cowBullSearch(userNumber, compNumber);
+      System.out.println("cow = " + cowBullCount[0]);
+      System.out.println("bull = " + cowBullCount[1]);
       System.out.println("Not quite. Try again.");
+      System.out.println("Enter a 4 digit number below: ");
       userNumber = userInput.nextLine();
     }
     userInput.close();
