@@ -41,32 +41,45 @@ public class Main {
   }
 
 
-  public static int[] cowBullSearch(String userNumber, String compNumber, int[] cowBullCount) {
-    // Specifiy the indecies of the cow and bull variables
-    int cow = cowBullCount[0];
-    int bull = cowBullCount[1];
-    
+  public static int[] cowBullSearch(String userNumber, String compNumber, int[] cowBullCount) { 
     // Search for cows and bulls by iterating through the userNumber and compNumber
     for (int i = 0; i < compNumber.length(); i++) {
+      
       // If the 2 digits are at the same index --> cow
-      if (userNumber[i] == compNumber[i]) {
-        cow += 1;
+      if (userNumber.charAt(i) == compNumber.charAt(i)) {
+        cowBullCount[0] += 1;
       }
       // If a digit from the userNumber is in the compNumber but not at the same index --> bull
-      else if (compNumber.contains(userNumber[i])) {
-        bull += 1;
-      }
-
-    // Return the number of cows and bulls from this search
-    return cowBullCount;
-        
-}
+      else if (compNumber.contains(userNumber.substring(i))) {
+        cowBullCount[1] += 1;
+      }        
     }
-  }
+  // Return the number of cows and bulls from this search
+  return cowBullCount;
+}
   
   public static void main(String[] args) {
+    int[] cowBullCount = new int[2];
+    int cow = cowBullCount[0];
+    int bull = cowBullCount[1];
+    int guess = 0;
+    String compNumber = String.valueOf(newNumber());
+    
+    System.out.println("Enter a 4 digit number below: ");
+    Scanner userInput = new Scanner(System.in);
+    String userNumber = userInput.nextLine();
 
-    
-    
+    while (userNumber != compNumber) {
+      guess += 1;
+      cowBullCount = cowBullSearch(userNumber, compNumber, cowBullCount);
+      System.out.println("cowBull =" + cowBullCount);
+      System.out.println("Not quite. Try again.");
+      userNumber = userInput.nextLine();
+    }
+    userInput.close();
+
+    if (userNumber.contentEquals(compNumber)) {
+      System.out.println("Correct!");
+    }
   }
 }
